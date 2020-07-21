@@ -334,7 +334,8 @@ c-----------------------------------------------------------
      +				,hkv_max,hev,hlv,date,time)
 
 	call sp111(1)           !here zenv, utlnv, vtlnv are initialized
-
+        ! BUG: sp111 calls copy_uvz which needs uprv, vprv, wlnv whose initialization (in init_uv) has not yet been done
+ 
 c-----------------------------------------------------------
 c initialize depth arrays and barene data structure
 c-----------------------------------------------------------

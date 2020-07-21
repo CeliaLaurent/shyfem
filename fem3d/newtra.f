@@ -516,8 +516,8 @@ c copies u/v/z to old time step
 	implicit none
 
 	zov   = znv
-        upro  = uprv
-        vpro  = vprv
+        upro  = uprv ! BUG: uprv not initialized!
+        vpro  = vprv ! BUG: vprv not initialized!
 	zeov  = zenv
 	uov   = unv			!$$UVBARO
 	vov   = vnv
@@ -525,7 +525,7 @@ c copies u/v/z to old time step
 	vlov  = vlnv
 	utlov = utlnv
 	vtlov = vtlnv
-	wlov  = wlnv
+	wlov  = wlnv ! BUG: wlnv not initialized!
 
 	end
 

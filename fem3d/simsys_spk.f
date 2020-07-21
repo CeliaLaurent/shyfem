@@ -323,7 +323,7 @@
 	real, parameter :: flag = 1.234567e+20
 
 	mm => l_matrix
-	n2zero = n2zero_max
+	n2zero = min(n2zero_max,size(mm%c2coo))
 
 	allocate(exchange(2*nkn_max+n2zero_max))
 	allocate(zglobal(nkn_global))

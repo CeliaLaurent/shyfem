@@ -269,6 +269,8 @@ c         ----------------------------------------------------------
 
           uso = utlov(lmax,ie)
           vso = vtlov(lmax,ie)
+          ! it happened with some particular compilation flags that
+          ! uso*uso+vso*vso<0, causing an error
 	  uv = sqrt(uso*uso+vso*vso)
 
 c         ----------------------------------------------------------

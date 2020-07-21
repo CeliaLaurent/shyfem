@@ -119,8 +119,11 @@ c****************************************************************
 	    ic(k) = ic(k) + 1
 	  end do
 	end do
-
-	ngrm = maxval(ic)	!too small for boundary nodes
+        ! this is a temporary fix, to be removed once will be found the reason 
+        ! of the erroneous memory access (SIMD vectorization?) happening line 550 of 
+        ! fem3d/links.f : ie = elem_list(ipe,k) where ipe=8 while elem_list 
+        ! is allocated with dimension 7 will be solved.
+	ngrm = maxval(ic)+1	!too small for boundary nodes
 
 	end
 	
