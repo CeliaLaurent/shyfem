@@ -571,8 +571,8 @@ c%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	!call prifnm(15)
 
 	!call shympi_finalize
-	call shympi_exit(99)
-	call exit(99)
+	call shympi_exit(0)
+	call exit(0)
 
 	stop
    95	continue

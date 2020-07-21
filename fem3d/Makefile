@@ -231,7 +231,7 @@ ifeq ($(PARTS),METIS)
   LIBPARTS      = metis
   ifdef PARTSDIR
     LIBG_PARTS    = -L$(PARTSDIR)/lib/ -l$(LIBPARTS)
-    LIBF_PARTS    = $(PARTSDIR)/lib/lib$(LIBPARTS).a
+    LIBF_PARTS    = $(PARTSDIR)/lib/lib$(LIBPARTS).so
   else
     LIBG_PARTS    = -l$(LIBPARTS)
     LIBF_PARTS    = 

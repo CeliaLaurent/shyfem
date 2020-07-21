@@ -1206,7 +1206,7 @@
 	integer i
 
         if( .not. all( a1 == a2 ) ) then
-          write(6,*) 'arrays are different: ' // text
+          write(6,*) 'integer arrays are different: ' // text
           write(6,*) 'process id: ',my_id
           write(6,*) 'total array size: ',n
 	  do i=1,n
@@ -1230,13 +1230,13 @@
 
 	integer i
 
-        if( .not. all( a1 == a2 ) ) then
-          write(6,*) 'arrays are different: ' // text
+        if( .not. all(  ABS(a1-a2)<1e-3  ) ) then
+          write(6,*) 'real arrays are different: ' // text
           write(6,*) 'process id: ',my_id
           write(6,*) 'total array size: ',n
 	  do i=1,n
-	    if( a1(i) /= a2(i) ) then
-	      write(6,*) my_id,i,a1(i),a2(i)
+	    if( ABS(a1(i)-a2(i))>=1e-3 ) then
+	      write(6,'(2i,2f35.30)') my_id,i,a1(i),a2(i)
 	    end if
 	  end do
 	  call shympi_abort
@@ -1255,13 +1255,13 @@
 
 	integer i
 
-        if( .not. all( a1 == a2 ) ) then
-          write(6,*) 'arrays are different: ' // text
+        if( .not. all( DABS(a1-a2)>=1d-8 ) ) then
+          write(6,*) 'double precision arrays are different: ' // text
           write(6,*) 'process id: ',my_id
           write(6,*) 'total array size: ',n
 	  do i=1,n
-	    if( a1(i) /= a2(i) ) then
-	      write(6,*) my_id,i,a1(i),a2(i)
+	    if( DABS(a1(i)-a2(i))>=1d-8 ) then
+	      write(6,'(2i,2f35.30)') my_id,i,a1(i),a2(i)
 	    end if
 	  end do
 	  call shympi_abort
