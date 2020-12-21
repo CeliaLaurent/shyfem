@@ -925,17 +925,17 @@ c local
 	double precision uuadv,uvadv,vuadv,vvadv
 
 c-----------------------------------------
-	real hact(0:nlvdi+1)
-	real rhact(0:nlvdi+1)
-	real alev(0:nlvdi)
+!      !real hact(0:nlvdi+1)
+!      !real rhact(0:nlvdi+1)
+!      !real alev(0:nlvdi)
 c-----------------------------------------
-	double precision rmat(10*nlvdi)
-	double precision smat(-2:2,2*nlvdi)
-	double precision s2dmat(-1:1,2)		!for 2D
-	double precision rvec(6*nlvdi)		!ASYM (3 systems to solve)
-	double precision rvecp(6*nlvdi)		!ASYM (3 systems to solve)
-	double precision solv(6*nlvdi)		!ASYM (3 systems to solve)
-	double precision ppx,ppy
+!      !double precision rmat(10*nlvdi)
+!      !double precision smat(-2:2,2*nlvdi)
+!      !double precision s2dmat(-1:1,2)		!for 2D
+!      !double precision rvec(6*nlvdi)		!ASYM (3 systems to solve)
+!      !double precision rvecp(6*nlvdi)		!ASYM (3 systems to solve)
+!      !double precision solv(6*nlvdi)		!ASYM (3 systems to solve)
+        double precision ppx,ppy
 c-----------------------------------------
 c function
 	integer locssp,iround

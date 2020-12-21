@@ -50,6 +50,19 @@
 	real, allocatable, save :: utlnv(:,:)
 	real, allocatable, save :: vtlov(:,:)
 	real, allocatable, save :: vtlnv(:,:)
+c-----------------------------------------
+        ! creating next arrays used in new3di.f instead of allocating
+        ! them at every iteration and for every element solves an
+        ! optimization issue encountered on the m100 cluster.
+	real, allocatable, save ::   hact(:) 
+	real, allocatable, save ::   rhact(:)
+	real, allocatable, save ::   alev(:) 
+	double precision, allocatable, save ::  rmat(:)
+	double precision, allocatable, save ::  smat(:,:)
+	double precision, allocatable, save ::  s2dmat(:,:)	!for 2D
+	double precision, allocatable, save ::  rvec(:)  	!ASYM (3 systems to solve)
+	double precision, allocatable, save ::  rvecp(:) 	!ASYM (3 systems to solve)
+	double precision, allocatable, save ::  solv(:)  	!ASYM (3 systems to solve)
 
 !==================================================================
 	contains
@@ -57,6 +70,9 @@
 
         subroutine mod_hydro_init(nkn,nel,nlv)
         
+	use levels, only : nlvdi
+        implicit none
+
         integer nkn, nel, nlv
         
         if( nkn == nkn_hydro .and. nel == nel_hydro .and.
@@ -98,6 +114,16 @@
         allocate(utlnv(nlv,nel))
         allocate(vtlov(nlv,nel))
         allocate(vtlnv(nlv,nel))
+
+	allocate(hact(0:nlvdi+1))
+	allocate(rhact(0:nlvdi+1))
+	allocate(alev(0:nlvdi))
+	allocate(rmat(10*nlvdi))
+	allocate(smat(-2:2,2*nlvdi))
+	allocate(s2dmat(-1:1,2))		!for 2D
+	allocate(rvec(6*nlvdi))		!ASYM (3 systems to solve)
+	allocate(rvecp(6*nlvdi))		!ASYM (3 systems to solve)
+	allocate(solv(6*nlvdi))		!ASYM (3 systems to solve)
 
 	zov = 0.
 	znv = 0.
